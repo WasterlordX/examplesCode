@@ -1,0 +1,113 @@
+.popup
+  $self: &
+  cursor: default
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: calc(100% - #{$safe-area-inset-bottom} - #{$safe-area-inset-top})
+  margin-top: $safe-area-inset-top
+  margin-bottom: $safe-area-inset-bottom
+  z-index: 30
+  background: rgba(var(--bg-base-rgb), .5)
+  display: flex
+  justify-content: center
+  align-items: center
+  @include mq($to: phablet)
+    position: fixed
+  &__row
+    @include mq($to: phablet)
+      height: 100%
+  &__wrapper
+    background: var(--bg-popup)
+    display: block
+    box-shadow: var(--dp12)
+    border-radius: 1rem
+    @include mq($to: phablet)
+      width: 100%
+      height: 100%
+      margin: 0
+      border-radius: 0
+      box-shadow: initial
+  &__close-btn
+    position: absolute
+    right: 0
+  &__header.header
+    min-height: 4.4rem
+    display: flex
+    align-items: start
+    justify-content: space-between
+    @include mq($to: phablet)
+      background: var(--bg-secondary)
+      height: $navbar-height-mb
+    .header__title
+      flex: 1
+      height: 100%
+      display: flex
+      align-items: center
+      justify-content: center
+      color: var(--font-active)
+      font: $h2-style
+      padding-top: 3.2rem
+      @include breakpoint(tablet)
+        font: $h2-style-tb
+      @include mq($to: phablet)
+        padding-bottom: 0
+        justify-content: flex-start
+        align-items: center
+        padding: 0
+        font: $h2-style-mb
+      &:first-letter
+        text-transform: capitalize
+    .header__right
+      display: flex
+      align-items: center
+    .icon-btn
+      display: flex
+      align-items: center
+      justify-content: center
+      height: $navbar-height
+      width: 5.1rem
+      @include mq($to: phablet)
+        height: $navbar-height-mb
+        .svg-icon
+          cursor: initial
+      &_back
+        .svg-icon
+          transform: rotate(90deg)
+  &__close
+    width: 5rem
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    @include mq($to: phablet)
+      cursor: initial
+      width: 4.4rem
+  &__body
+    padding: 1rem 2rem 3.2rem 2rem 
+    // word-break: break-all
+    color: var(--font-color)
+    &_no-paddings
+      padding: 0 !important
+      padding-top: 0 !important
+    @include mq($to: phablet)
+      height: calc(100% - #{$navbar-height-mb})
+      overflow-y: auto
+      margin: 0
+  &__footer
+    display: flex
+    justify-content: center
+    padding: 0 2rem 2rem 2rem
+    @include mq($to: phablet)
+      width: 100%
+      margin: 0
+      position: absolute
+      bottom: 0
+      padding: 0
+      justify-content: space-evenly
+  &__footer-close
+    @include mq($to: phablet)
+      margin: 0!important
+      flex: 1 1
