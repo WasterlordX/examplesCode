@@ -1,0 +1,126 @@
+.date-range
+  display: flex
+  width: 53.2rem
+  user-select: none
+  background-color: var(--bg-hover)
+  border-radius: 1rem
+  box-shadow: var(--dp4)
+  @include mq($to: phablet)
+    width: 100%
+    box-shadow: initial
+    border-radius: initial
+  &__active-zone
+    display: flex
+    flex-direction: column
+    @include mq($to: phablet)
+      width: 100%
+  &__period
+    max-height: 6rem
+    flex: 1
+    display: flex
+    box-shadow: var(--dp1)
+    margin-bottom: .3rem
+    border-radius: 1rem 0 0 0
+    @include mq($to: phablet)
+      border-radius: 0
+    &__item
+      flex: 1
+      display: flex
+      flex-direction: column
+      min-height: 6rem
+      padding: .8rem 1.2rem
+      justify-content: space-between
+      font-size: 1.2rem
+      color: var(--font-color)
+      text-transform: capitalize
+      cursor: pointer
+      will-change: background-color
+      transition: background-color .25s ease-in
+      &:first-child
+        border-radius: inherit
+      span
+       color: var(--font-transparent)
+       &.value
+        color: var(--font-active)
+      &.--active
+        cursor: initial
+        background-color: var(--primary-hover-transparent)
+        span
+          &.name
+            color: var(--font-transparent)
+      @include mq($to: phablet)
+        cursor: initial
+        &:hover
+          span
+            color: var(--font-active)
+
+  &__controls
+    overflow: hidden
+    width: 100%
+    display: flex
+    padding: 2.4rem 1.6rem
+  &__period-modes
+    flex: 1
+    display: flex
+    flex-direction: column
+    box-shadow: var(--dp1-left)
+    border-radius: 0 1rem 1rem 0
+    &__item
+      position: relative
+      box-sizing: border-box
+      display: flex
+      align-items: center
+      padding: 0 2rem
+      height: 4.4rem
+      cursor: pointer
+      color: var(--font-color)
+      &:before
+        content: ''
+        position: absolute
+        margin-left: -2rem
+        width: calc(100% - .4rem)
+        height: calc(100% - .2rem)
+        border-bottom: .1rem solid var(--bg-secondary)
+      &:first-child
+        &:before
+          border-radius: 0 1rem 0 0
+      &.--active
+        &:before
+          border-bottom: initial
+          border: .2rem solid var(--primary-transparent)
+        &:first-child
+          &:before
+            height: calc(100% - .4rem)
+        &:hover
+          color: var(--font-color)
+      &:hover
+        color: var(--font-active)
+  &__period-modes-mobile
+    display: flex
+    width: 100%
+    flex-direction: row
+    justify-content: flex-start
+    flex-wrap: nowrap
+    overflow-x: auto
+    overflow-y: hidden
+    padding: 1.6rem 0
+    &::-webkit-scrollbar
+      width: 0 !important
+      display: none !important
+    &__item
+      padding-left: 1.6rem
+      &:last-child
+        padding-right: 1.6rem
+      &__inner
+        display: flex
+        flex-wrap: nowrap
+        align-items: center
+        height: 3.2rem
+        padding: 0 1.6rem
+        border: .1rem solid var(--primary-hover-transparent)
+        border-radius: 1rem
+        color: var(--font-color)
+        white-space: nowrap
+        &.--active
+          background-color: var(--primary)
+          color: var(--font-active-2)
