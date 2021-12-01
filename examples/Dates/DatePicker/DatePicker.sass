@@ -1,0 +1,143 @@
+.date-picker
+  width: 32rem
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  background: var(--bg-hover)
+  user-select: none
+  font: $body-font
+  @include breakpoint(tablet)
+    font: $body-font-tb
+  @include mq($to: phablet)
+    width: 100%
+    font: $body-font-mb
+  &__wrapper
+    width: 100%
+    @include mq($to: phablet)
+      height: 100%
+      width: 100%
+  &__header
+    display: flex
+    justify-content: space-between
+    align-items: center
+    width: 100%
+    &_left, &_right
+      display: flex
+      align-items: center
+      justify-content: center
+      height: 100%
+      cursor: pointer
+      color: var(--font-color)
+      text-transform: capitalize
+      padding: 1.6rem 1.2rem 2.4rem 1.2rem
+      font: $body-font-bold
+      @include breakpoint(tablet)
+        font: $body-font-bold-tb
+      @include mq($to: phablet)
+        font: $body-font-bold-mb
+      &:hover
+        color: var(--font-active)
+      @include mq($to: tablet)
+        padding: 2rem 1.2rem 2.4rem 1.2rem
+        cursor: initial
+        &:hover
+          color: var(--font-color)
+  &__views-wrapper
+    position: relative
+    height: 31rem
+    @include mq($to: phablet)
+      height: auto
+  &__view
+    width: 100%
+    height: 100%
+    color: var(--font-color)
+  &__calendar
+    @include mq($to: phablet)
+      width: 100%
+  .weekdays
+    display: flex
+    font: $additional-text
+    padding-bottom: 1.4rem
+    @include mq($to: tablet)
+      padding-bottom: 1.6rem
+    &__item
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 4.4rem
+      color: var(--primary)
+      text-transform: uppercase
+      @include mq($to: phablet)
+        width: initial
+        flex: 1
+  .days
+    &__row
+      display: flex
+      margin-bottom: 0.2rem
+      &:nth-last-child(1)
+        margin-bottom: initial
+    &__item
+      display: flex
+      justify-content: center
+      align-items: center
+      width: 4.4rem
+      height: 4.4rem
+      color: var(--font-active)
+      font-size: 1.4rem
+      cursor: pointer
+      will-change: background-color
+      transition: background-color .25s ease-out, border-radius .25s ease-out
+      position: relative
+      z-index: 1
+      @include mq($to: phablet)
+        width: initial
+        height: initial
+        flex: 1
+        &:before
+          content: ''
+          padding: 50% 0
+          display: inline-block
+      &.--another-month
+        color: var(--font-transparent)
+      &.--today
+        background-color: var(--bg-input-2)
+        border-radius: 1rem
+      &.--in-period, &.--from-period-day, &.--to-period-day
+        border-radius: 0
+        background-color: var(--primary-transparent)
+      &.--selected
+        border-radius: 1rem
+        background-color: var(--primary-hover)
+        &:before
+          content: ""
+          width: 100%
+          height: 100%
+          position: absolute
+          z-index: -1
+          @include mq($to: phablet)
+            height: 0
+        &.--from-period-day
+          &:before
+            border-radius: 1rem 0 0 1rem
+            background-color: var(--primary-transparent)
+        &.--to-period-day
+          &:before
+            border-radius: 0 1rem 1rem 0
+            background-color: var(--primary-transparent)
+        &:hover
+          background-color: var(--primary-hover)
+          cursor: initial
+      &.--disabled
+        cursor: initial
+        opacity: 0.3
+        &:hover
+          background-color: initial !important
+      &:hover
+        background-color: var(--primary-hover-transparent)
+      @include mq($to: phablet)
+        cursor: initial
+        &:hover
+          background-color: initial
+  &__buttons
+    padding: 1.6rem
